@@ -1,0 +1,109 @@
+// 8 Napisać program wczytujący ciąg n (1<=n<=1000) liczb całkowitych i wypisujący na ekranie najmniejszą i największą wczytaną liczbę.
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n, num, min = int.MaxValue, max = int.MinValue;
+
+    Console.Write("Enter the number of integers: ");
+    n = int.Parse(Console.ReadLine());
+
+    for (int i = 0; i < n; i++) {
+        Console.Write("Enter an integer: ");
+        num = int.Parse(Console.ReadLine());
+        if (num < min) {
+            min = num;
+        }
+        if (num > max) {
+            max = num;
+        }
+    }
+
+    Console.WriteLine("Minimum: " + min);
+    Console.WriteLine("Maximum: " + max);
+  }
+}
+
+// 9 Napisać program wczytujący ciąg n (1<=n<=1000) liczb naturalnych i wypisujący na ekranie wszystkie parzyste liczby w kolejności niemalejącej. Do wypisywania elementów tablicy użyj pętli foreach.
+// Wskazówka: Posortuj wczytane liczby, a następnie z tablicy wypisz tylko liczby parzyste.
+using System;
+using System.Linq;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n;
+    int[] numbers;
+
+    Console.Write("Enter the number of integers: ");
+    n = int.Parse(Console.ReadLine());
+
+    numbers = new int[n];
+    for (int i = 0; i < n; i++) {
+        Console.Write("Enter an integer: ");
+        numbers[i] = int.Parse(Console.ReadLine());
+    }
+
+    var sortedEvenNumbers = numbers.Where(x => x % 2 == 0).OrderBy(x => x);
+
+    Console.Write("Even numbers in ascending order: ");
+    foreach(int num in sortedEvenNumbers) {
+        Console.Write(num + " ");
+    }
+  }
+}
+
+// 10 Napisać program wczytujący ciąg n (1<=n<=1000) liczb całkowitych i wypisujący na ekranie sumę kwadratów wczytanych liczb.
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n = int.Parse(Console.ReadLine());
+    int sum = 0;
+
+    for (int i = 0; i < n; i++) {
+      int number = int.Parse(Console.ReadLine());
+      sum += number * number;
+    }
+
+    Console.WriteLine(sum);
+  }
+}
+
+// 11 Napisać program wczytujący ciąg n (1<=n<=1000) liczb całkowitych i wypisujący na ekranie informację ile liczb jest dodatnich, ujemnych i równych zero.
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n, positive = 0, negative = 0, zero = 0;
+    Console.WriteLine("Enter the number of integers: ");
+    n = Convert.ToInt32(Console.ReadLine());
+    int[] numbers = new int[n];
+    Console.WriteLine("Enter the integers: ");
+    for (int i = 0; i < n; i++) {
+        numbers[i] = Convert.ToInt32(Console.ReadLine());
+        if (numbers[i] > 0) {
+            positive++;
+        } else if (numbers[i] < 0) {
+            negative++;
+        } else {
+            zero++;
+        }
+    }
+    Console.WriteLine("Positive numbers: " + positive);
+    Console.WriteLine("Negative numbers: " + negative);
+    Console.WriteLine("Zero numbers: " + zero);
+  }
+}
+
+// 12. Wczytaj liczbę naturalną n i wypisz na ekranie tą liczbę w systemie ósemkowym.
+
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n;
+    Console.WriteLine("Enter a natural number: ");
+    n = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("The number in octal: " + Convert.ToString(n, 8));
+  }
+}

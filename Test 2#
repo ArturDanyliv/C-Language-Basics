@@ -1,0 +1,84 @@
+// 7. Napisz program obliczający wartość n! (n silnia, n!=1*2*...*n) dla wczytanej z klawiatury liczby naturalnej n. Użyj pętli while. Np.: dla n=5 wypisz wynik 5!=120.
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n, factorial = 1;
+
+    Console.Write("Enter a number: ");
+    n = int.Parse(Console.ReadLine());
+
+    while (n > 0) {
+        factorial *= n;
+        n--;
+    }
+
+    Console.WriteLine("{0}! = {1}", n, factorial);
+  }
+}
+
+// 8. Napisz program stwierdzający, czy zadana liczba n jest pierwsza. Użyj pętli while.
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n, i = 2;
+    bool isPrime = true;
+
+    Console.Write("Enter a number: ");
+    n = int.Parse(Console.ReadLine());
+
+    while (i <= Math.Sqrt(n)) {
+        if (n % i == 0) {
+            isPrime = false;
+            break;
+        }
+        i++;
+    }
+
+    if (isPrime) {
+        Console.WriteLine(n + " is a prime number.");
+    } else {
+        Console.WriteLine(n + " is not a prime number.");
+    }
+  }
+}
+
+// 9. Napisz program obliczający sumę cyfr dla wczytanej z klawiatury liczby naturalnej.
+// Użyj pętli while. Np.: Dla liczby=1342 trzeba obliczyć sumę 1+3+4+2.
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n, sum = 0, digit;
+
+    Console.Write("Enter a number: ");
+    n = int.Parse(Console.ReadLine());
+
+    while (n > 0) {
+        digit = n % 10;
+        sum += digit;
+        n /= 10;
+    }
+
+    Console.WriteLine("Sum of digits: " + sum);
+  }
+}
+
+// 10  Napisać program sumujący kolejne liczby całkowite podawane przez użytkownika, aż do napotkania zera. Wypisz otrzymaną sumę na ekranie. Użyj pętli do-while.
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int n, sum = 0;
+
+    do {
+        Console.Write("Enter a number (0 to exit): ");
+        n = int.Parse(Console.ReadLine());
+        sum += n;
+    } while (n != 0);
+
+    Console.WriteLine("Sum: " + sum);
+  }
+}
+

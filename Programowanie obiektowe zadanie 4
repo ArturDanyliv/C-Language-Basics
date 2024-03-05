@@ -1,0 +1,231 @@
+using System;
+using System.Collections.Generic;
+
+public static class KategorieVAT
+{
+    public static readonly HashSet<string> DostępneKategorie = new HashSet<string>
+    {
+        "23%", "8%", "5%", "0%"
+    };
+}
+
+public static class KrajePochodzenia
+{
+    public static readonly HashSet<string> DostępneKraje = new HashSet<string>
+    {
+        "Polska", "Niemcy", "Francja", "Włochy"
+    };
+}
+
+public class Produkt
+{
+    private string nazwa;
+    private decimal cenaNetto;
+    private string kategoriaVAT;
+    private string krajPochodzenia;
+
+    public Produkt(string nazwa, decimal cenaNetto, string kategoriaVAT, string krajPochodzenia)
+    {
+        Nazwa = nazwa;
+        CenaNetto = cenaNetto;
+        KategoriaVAT = kategoriaVAT;
+        KrajPochodzenia = krajPochodzenia;
+    }
+
+    public string Nazwa
+    {
+        get { return nazwa; }
+        set { nazwa = value; }
+    }
+
+    public decimal CenaNetto
+    {
+        get { return cenaNetto; }
+        set
+        {
+            if (value < 0)
+                throw new ArgumentException("Cena netto nie może być ujemna.");
+
+            cenaNetto = value;
+        }
+    }
+
+    public string KategoriaVAT
+    {
+        get { return kategoriaVAT; }
+        set
+        {
+            if (!KategorieVAT.DostępneKategorie.Contains(value))
+                throw new ArgumentException("Nieprawidłowa kategoria VAT.");
+
+            kategoriaVAT = value;
+        }
+    }
+
+    public virtual decimal CenaBrutto
+    {
+        get { throw new NotImplementedException(); }
+    }
+
+    public string KrajPochodzenia
+    {
+        get { return krajPochodzenia; }
+        set
+        {
+            if (!KrajePochodzenia.DostępneKraje.Contains(value))
+                throw new ArgumentException("Nieprawidłowy kraj pochodzenia.");
+
+            krajPochodzenia = value;
+        }
+    }
+}
+
+public class ProduktSpożywczy : Produkt
+{
+    private decimal kalorie;
+    private HashSet<string> alergeny;
+
+    public ProduktSpożywczy(string nazwa, decimal cenaNetto, string kategoriaVAT, string krajPochodzenia,
+        decimal kalorie, HashSet<string> alergeny)
+        : base(nazwa, cenaNetto, kategoriaVAT, krajPochodzenia)
+    {
+        Kalorie = kalorie;
+        Alergeny = alergeny;
+    }
+
+    public decimal Kalorie
+    {
+        get { return kalorie; }
+        set
+        {
+            if (value < 0)
+                throw new ArgumentException("Wartość kaloryczna nie może być ujemna.");
+
+            kalorie = value;
+        }
+    }
+
+    public HashSet<string> Alergeny
+    {
+        get { return alergeny; }
+        set { alergeny = value; }
+    }
+}
+
+public class ProduktSpożywczyNaWagę : ProduktSpożywczy
+{
+    public ProduktSpożywczyNaWagę(string nazwa, decimal cenaNetto, string kategoriaVAT, string krajPochodzenia,
+        decimal kalorie, HashSet<string> alergeny)
+        : base(nazwa, cenaNetto, kategoriaVAT, krajPochodzenia, kalorie, alergeny)
+    {
+    }
+}
+
+public class ProduktSpożywczyPaczka : ProduktSpożywczy
+{
+    public ProduktSpożywczyPaczka(string nazwa, decimal cenaNetto, string kategoriaVAT, string krajPochodzenia,
+        decimal kalorie, HashSet<string> alergeny)
+        : base(nazwa, cenaNetto, kategoriaVAT, krajPochodzenia, kalorie, alergeny)
+    {
+    }
+}
+
+public class ProduktSpożywczyNapój : ProduktSpożywczyPaczka
+{
+    private decimal objętość;
+
+    public ProduktSpożywczyNapój(string nazwa, decimal cenaNetto, string kategoriaVAT, string krajPochodzenia,
+        decimal kalorie, HashSet<string> alergeny, decimal objętość)
+        : base(nazwa, cenaNetto, kategoriaVAT, krajPochodzenia, kalorie, alergeny)
+    {
+        Objętość = objętość;
+    }
+
+    public decimal Objętość
+    {
+        get { return objętość; }
+        set { objętość = value; }
+    }
+}
+
+public class Wielopak : Produkt
+{
+    private Produkt produkt;
+    private ushort ilość;
+    private decimal cenaNetto;
+
+    public Wielopak(Produkt produkt, ushort ilość, decimal cenaNetto)
+        : base(produkt.Nazwa, produkt.CenaNetto, produkt.KategoriaVAT, produkt.KrajPochodzenia)
+    {
+        Produkt = produkt;
+        Ilość = ilość;
+        CenaNetto = cenaNetto;
+    }
+
+    public Produkt Produkt
+    {
+        get { return produkt; }
+        set { produkt = value; }
+    }
+
+    public ushort Ilość
+    {
+        get { return ilość; }
+        set { ilość = value; }
+    }
+
+    public override decimal CenaBrutto
+    {
+        get { return produkt.CenaBrutto * ilość; }
+    }
+
+    public decimal CenaNetto
+    {
+        get { return cenaNetto; }
+        set
+        {
+            if (value < 0)
+                throw new ArgumentException("Cena netto nie może być ujemna.");
+
+            cenaNetto = value;
+        }
+    }
+
+    public override string KategoriaVAT
+    {
+        get { return Produkt.KategoriaVAT; }
+        set { Produkt.KategoriaVAT = value; }
+    }
+
+    public override string KrajPochodzenia
+    {
+        get { return Produkt.KrajPochodzenia; }
+        set { Produkt.KrajPochodzenia = value; }
+    }
+}
+
+
+
+// Przykładowe użycie:
+Produkt produkt = new Produkt("Jabłko", 2.50m, "8%", "Polska");
+ProduktSpożywczy spożywczy = new ProduktSpożywczy("Chleb", 3.20m, "5%", "Polska", 200, new HashSet<string> { "Gluten" });
+ProduktSpożywczyNaWagę spożywczyNaWagę = new ProduktSpożywczyNaWagę("Ser żółty", 15.99m, "23%", "Polska", 300, new HashSet<string> { "Laktoza" });
+ProduktSpożywczyPaczka spożywczyPaczka = new ProduktSpożywczyPaczka("Mleko", 2.99m, "5%", "Polska", 60, new HashSet<string> { "Laktoza" });
+ProduktSpożywczyNapój spożywczyNapój = new ProduktSpożywczyNapój("Sok pomarańczowy", 4.50m, "8%", "Polska", 50, new HashSet<string> { "Glukoza" }, 500);
+Wielopak wielopak = new Wielopak(produkt, 6, 12.99m);
+
+Console.WriteLine(produkt.CenaBrutto); // NotImplementedException
+Console.WriteLine(spożywczy.CenaBrutto); // NotImplementedException
+Console.WriteLine(wielopak.CenaBrutto); // 15
+
+produkt.Nazwa = "Gruszka";
+spożywczy.Nazwa = "Masło";
+wielopak.Produkt.Nazwa = "Pomidory";
+
+Console.WriteLine(produkt.Nazwa); // Gruszka
+Console.WriteLine(spożywczy.Nazwa); // Masło
+Console.WriteLine(wielopak.Produkt.Nazwa); // Pomidory
+
+
+
+ 

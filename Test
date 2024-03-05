@@ -1,0 +1,119 @@
+// 10. Napisz program drukujący na ekranie kolejne liczby naturalne podzielne przez 7. Ilość liczb wczytaj z klawiatury. Użyj pętli for.
+int main()
+{
+	short h;
+	std::cout << "h = ";
+	std::cin >> h;
+	
+	for (short i = 1; i <= h; ++i) {
+		for (short j = 1; j <= i; ++j) {
+			std::cout << i * j << ", ";
+		}
+		std::cout << std::endl;
+	}
+	
+	std::cin.ignore().get();
+	return 0;
+}
+
+// 11. Napisz program obliczający sumę n początkowych liczb nieparzystych. Liczbę n należy pobrać od użytkownika. Do obliczenia wartości sumy użyj pętli for.
+using namespace std;
+int main ()
+{
+   system("chcp 1250");
+   system("cls");
+   int n, suma=0, liczba=1;
+   
+   cout<<"Ile liczb nieparzystych chcesz zsumować: ";
+   cin>>n;
+   cout<<endl;
+   for(int i=1; i<=n; i++)
+   {
+    suma=suma+liczba;
+    cout<<liczba;
+    liczba=liczba+2;
+    if(i!=n) cout<<"+";
+}
+ 
+cout<<"="<<suma<<endl<<endl;
+   system("pause");
+   return 0;
+}
+
+// 12. Napisz program drukujący na ekranie liczby. Wysokość wczytaj z klawiatury. Użyj pętli for. Oto wydruk dla wysokości h=6:
+int main()
+{
+	short h;
+	std::cout << "h = ";
+	std::cin >> h;
+	
+	for (short i = 0; i < h; ++i) {
+		for (short j = 0; j <= i; ++j) {
+			std::cout << i * 3 + j * 3 << ", ";
+		}
+		std::cout << std::endl;
+	}
+	
+	std::cin.ignore().get();
+	return 0;
+}
+
+
+// 13. Wczytaj liczbę naturalną n (n>4). Narysuj na ekranie ze znaków X kontur trójkąta prostokątnego jak na poniższym przykładzie. Użyj pętli for.
+// Dla n=5 powinien zostać narysowany trójkąt:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace trojkat_prostokatny_2
+{
+    class Program
+    {
+        static void rek1(int n, int i)
+        {
+            if (i == n)
+                Console.WriteLine();
+            else
+            {
+                rek2(n - i);
+                rek1(n, i + 1);
+            }
+        }
+        static void rek2(int j)
+        {
+            if (j == 0)
+                Console.WriteLine();
+            else
+            {
+                Console.Write("X");
+                rek2(j - 1);
+            }
+
+        }
+
+        static void Main(string[] args)
+        {
+            Console.Write("Podaj n: ");
+            int n = int.Parse(Console.ReadLine());
+            if (n > 4)
+                rek1(n, 0);
+            else
+                Console.WriteLine("Złe n.");
+        }
+    }
+}
+
+// 14. Napisz program znajdujący wszystkie trójki liczb pitagorejskich z zadanego przedziału. Np.: dla przedziału [3,5] mamy jedną trójkę: 3, 4, 5 (bo 3^2+4^2=5^2).
+static IEnumerable<unit[]> GetPitagoreanTuples(unit a, uint b)
+{
+  var min=Math.Min(a,b);
+  var max=Math.Max(a,b);
+  for(uint i=min; i<=max;i++)
+   for(uint j=i;j<=max;j++)
+    for(uint k=j+1;k<=max;k++)
+     if(i*i+j*j==k*k)
+      yield return new []{i,j,k};
+}
+

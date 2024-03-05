@@ -1,0 +1,152 @@
+// C#
+// 1. Napisać program wypisujący na ekranie tekst "Witaj Świecie"
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Writeline("Witaj Swiecie")
+            Console.ReadKey(true); // pauza
+        }
+    }
+} 
+
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("вітаю мене звати Артур  ")
+            Console(true);
+        }
+    }
+}
+
+
+// 2. Napsac program wczytujacy imie uzytkownika i wypisujacy na ekranie tekst "Witaj imie!"
+using System
+namespace ConsoleApplication1 
+{
+    class Program 
+    {
+        static void Main(string[] args )
+        {
+            string imie;
+            Console.Write("Podaj swoje imie :")
+            imie = Console.ReadLine();
+            Console.WriteLine("Witaj {0}! " , imie)
+            Console.ReadKey(true); //pauze
+        }
+    }
+}
+
+// 3 Napisac program wczytujacy z klawiatury liczbe calkowita i wypisujacy na ekranie szescian wczytanej liczby 
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main (string[] args)
+        {
+            int a;
+            console.Write("Podaj a= ");
+            a = Convert.Toint32(Console.ReadLine());
+            Console.WriteLine(" a^3 = {0}", a*a*a);
+            Console.ReadKey(true); // pauza 
+        }
+    }
+}
+
+// 4 Napisać program wczytujący boki prostokąta i wypisujący na ekranie jego pole i obwód.
+using System 
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args )
+        {
+            double a,b;
+            Console.Write("Podaj a=");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Podaj b= ");
+            b = Convert.ToDouble(Console.Readline());
+            Console.WriteLine("Pole={0}", a*b);
+            Console,WriteLine("Obwod = {0}", 2*a + 2*b);
+            Console.ReadKey(true) // pauza 
+        }
+    }
+}
+
+// 5 Napisac program wczytujacy promien podstawy (r) i wysokosc (h) stozka i wypisujacy na ekranie objetosc i pole calkowite tego stozka 
+using System
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        class void Main(string[] args )
+        {
+            double r, h, l, V, Pc;
+            Console.Write("Podaj r= ");
+            r = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Podaj h=");
+            h = Convert.ToDouble(Console.ReadLine());
+            l = Math.Sqrt(r * r + h * h); // tworzaca
+            V = 1.0 / 3 * Math.PI * r * r * h;
+            Pc = Math.PI * r * r + Math.PI * r * l;
+            Console.WriteLine(V={0}, V);
+            Console.ReadKey(true); // pauza 
+        }
+    }
+}
+
+// 6 Napisac program wczytujacy dwie liczby i wpisujacy na ekranie ich sume , roznice , iloczyn i iloraz 
+using System;
+namespace ConsoleApplication1
+{
+    class Program 
+    {
+        static void Main(string[] args)
+        {
+            double a, b, suma, roznica, iloczyn, iloraz;
+            Console.Write("Podaj a=");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Podaj b=");
+            b = Convert.ToDouble(Console.ReadLine());
+            suma = a + b
+            roznica = a - b
+            iloczyn = a * b 
+            iloraz = a / b; // moze nastepic dzielenie przez zero!
+            Console.WriteLine("{0} + {1} = {2}", a, b, suma);
+            Console.WriteLine("{0} - {1} = {2}", a, b, roznica);
+            Console.WriteLine("{0} * {1} = {2}", a, b, iloczyn);
+            Console.WriteLine("{0} / {1} = {2}", a, b, iloraz);
+
+            Console.ReadKey(true); // pauza 
+        }
+    }
+}
+// Uwaga Chcac sie zabezpieczyc przed dzieleniem przez zero trzeba uzyc konstrukcji try-catch
+
+// 7 Napisac Program wczytujacy  dwie liczby calkowite i wpisujacy na ekranie iloraz tych liczb z uzwglednieniem czesci calkowitej i reszty z dzielenia 
+using System;
+namespace ConsoleApplication1
+{
+    class Program 
+    {
+        Static void Main(string[] args)
+        {
+            int a,b;
+            Console.Write("Podaj a= ");
+            a = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Podaj b= ");
+            b = Convert.ToInt32(Console.readLine());
+            Console.WriteLine("{0}/{1}={2}r{3}", a, b, a/b, a%b);
+            Console.ReadKey(true); // pauza 
+        }
+    }
+}
+

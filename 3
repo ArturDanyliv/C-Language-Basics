@@ -1,0 +1,208 @@
+// Napisac progrm wypisujacy  na ekranie kolejne licby calkowitwe od 11 do 33 . Uzyj petli for 
+using System;
+namespace ConsoleApllication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+            for ( i = 11; i <= 33; i++)
+                Console.Write("{0}, ", i)
+            Console.ReadKey(true) // pauza
+        }
+    }
+}
+
+// Napisać program wczytujący wartość liczby naturalnej n (n>=0), obliczający wartość 2^n (2 do potęgi n) i wypisujący wynik na ekranie w formacie (np. dla n=10) : 2^10=1024. Do obliczenia wartości wyrażenia użyj pętli for.
+using System;
+namespace Consoleapplecation1
+{
+    class Program
+    {
+        class void Main(string[] args)
+        {
+            int i, wynik = 1, n;
+            Console.Write("Podaj liczbe naturalna n =")
+            n = Convert.ToInt32(Console.ReadLine());
+            for (i = 1; i <= n; i++)
+                wynik *= 2;
+            Console.WriteLine ( " 2 ^{0}={1}", n, wynik);
+            Console.ReadKey(true); // pauza 
+        }
+    }
+}
+
+// 3. Napisac program wczytujacy liczbe calkowita n(n>2) i wypisujacy na ekranie wartosc sumy 1 + 2 + ... + n .Do pbliczenia wartosci sumy uzyj petli for 
+using System;
+namesoace ConsoleApllication1
+{
+    static void Main( string[] args)
+    {
+        int n , i, suma = 0;
+        Console.Write("Podaj n = ");
+        n = Convert.ToInt32(Console.ReadLine());
+
+        for (i = 1; i <= n; i++)
+            suma += i; //suma=suma+i
+        Console.WriteLine("1+...+{0}={1}", n, suma);
+        Console.ReadKey(true) // pauza
+    }
+}
+
+// 4. Wczytaj dwie liczby naturalne dodatnie n i k. Narysuj z gwiazdek na ekranie prostokąt posiadający n wierszy i k kolumn. Użyj pętli for.
+using System;
+namespace ConsoleApplication1
+{
+    class Program 
+    {
+        static void Main(string [] args)
+        {
+            int i, j , n, k;
+            Console.Write("Podaj liczbe naturalna dodatnia n = ");
+            n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Podaj liczbe naturalna dodatnia k = ");
+            k = Convert.ToInt32(Console.ReadLine());
+
+            for (i = 1; i <=n ; i++) // liczba wierszy
+            {
+                for (j = 1; j <= k; j++ ) // liczba kolumn 
+                    Console.WriteLine("*");
+                Console.WriteLine(""); // nowa linia 
+            }
+            Console.ReadKey(true) // pauza
+        }
+    }
+}
+
+// 5 Wczytaj liczbę naturalną n (n>1). Narysuj na ekranie z gwiazdek trójkąt prostokątny. Użyj
+// pętli for. Przykładowo dla n=3 narysowany trójkąt powinien wyglądać: 
+// *
+// **
+// ***
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void main(string[] args)
+        {
+            int i, j, n;
+            Console.Write("Podaj liczbe naturalna n > 1: ");
+            n = Convert.ToInt(Console.ReadLine());
+
+            for (i = 1; i <= n; i++) // liczba wierszy 
+            {
+                for (j = 1; j <= i; j++) // liczba kolumn
+                    Console.WriteLine("*"); 
+                Console.WriteLine("");  // nowa linia
+            }
+            Console.ReadKey(true); // pauza
+        }
+    }
+}
+
+// 6. 
+// Wczytaj liczbę naturalną n (n>1). Narysuj na ekranie z gwiazdek trójkąt równoramienny, który
+// nie jest trójkątem prostokątnym. Użyj pętli for. Przykładowo dla n=3 narysowany trójkąt powinien wyglądać:
+//   *  
+//  *** 
+// *****
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void main(string[] args)
+        {
+            int i, j, n;
+            Console.Write("Podaj liczbe naturalna n > 1: ");
+            n = Convert.ToInt(Console.ReadLine());
+
+            for (i = 1; i <= n; i++) // liczba wierszy 
+            {
+                
+               
+               for (j = 1; j <= n-i; j++) Console.Write(" "); //spacje
+               for (j = 1; j <= 2*i-1; j++) Console.Write("*");  // gwiazdki
+               Console.WriteLine(""); // nowa linia
+               
+            }
+            Console.ReadKey(true); // pauza
+        }
+    }
+}
+
+
+// Spośród liczb od 1 do 100 wypisz na ekranie wszystkie liczby podzielne przez 13. Użyj pętli for.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+            for (i = 13; i <= 100; i += 13)
+                Console.Write("{0}, ", i);
+            Console.ReadKey(true); // pauza
+        }
+    }
+}
+
+
+// 8. Wczytaj z klawiatury rok_początkowy i rok_końcowy oraz wypisz na ekranie wszystkie lata przestępne od roku_początkowego do roku_końcowego włącznie. Użyj pętli for.
+using System
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int rok1, rok2, i;
+            Console.Write("Podaj rok poczatkowy: ");
+            rok1 = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Podaj rok konsowy: ");
+            rok2 = COnvert.ToInt32(Console.ReadLine());
+
+            for (i = rok1; i <= rok2; i++)
+                if ( ( (i%4 == 00) && ( i&100!= 0)) || ( i%400 == 0) )
+                    Console.Write("{0}, ", i);
+            Console.ReadKey(true); // pauza
+        }
+    }
+}
+
+// 9.
+// Wypisz tabliczkę mnożenia do 100 w formie tabelki:
+// 1  2  3  4 5 6 7 8 9 10
+// 2  4  6  8101214161820
+// 3  6  9  12151821242730
+// 4  8  12 16202428323640
+// 5  10 15 20253035404550
+// 6  12 18 24303642485460
+// 7  14 21 28354249566370
+// 8  16 24 32404856647280
+// 9  18 27 36455463728190
+// 10 20 30 40 50 60 70 80 90 100
+
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main (string[] args)
+        {
+            for i, j;
+            for (i = 1l i <= 10; i++) // wiersze
+            {
+                for (j=1; j<=10; j++) // kolumny
+                    Console.Write("{0,3} ", i*j);  // wiersz * kolumna
+                Console.WriteLine(" ");
+            }
+        }       Console.ReadKey(true); // pauza 
+    }
+}

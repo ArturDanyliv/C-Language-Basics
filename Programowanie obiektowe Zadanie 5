@@ -1,0 +1,78 @@
+using System;
+
+public class Macierz<T> : IEquatable<Macierz<T>> where T : IEquatable<T>
+{
+    private T[,] tablica;
+
+    public int WymiarWierszy { get; }
+    public int WymiarKolumn { get; }
+
+    public Macierz(int wymiarWierszy, int wymiarKolumn)
+    {
+        if (wymiarWierszy <= 0 || wymiarKolumn <= 0)
+            throw new ArgumentException("Wymiar wierszy i wymiar kolumn muszą być większe od zera.");
+
+        WymiarWierszy = wymiarWierszy;
+        WymiarKolumn = wymiarKolumn;
+        tablica = new T[WymiarWierszy, WymiarKolumn];
+    }
+
+    public T this[int wiersz, int kolumna]
+    {
+        get
+        {
+            if (CzyPrawidloweIndeksy(wiersz, kolumna))
+                return tablica[wiersz, kolumna];
+            
+            throw new ArgumentOutOfRangeException("Nieprawidłowe indeksy.");
+        }
+        set
+        {
+            if (CzyPrawidloweIndeksy(wiersz, kolumna))
+                tablica[wiersz, kolumna] = value;
+            
+            throw new ArgumentOutOfRangeException("Nieprawidłowe indeksy.");
+        }
+    }
+
+    public bool Equals(Macierz<T> other)
+    {
+        if (other == null)
+            return false;
+
+        if (WymiarWierszy != other.WymiarWierszy || WymiarKolumn != other.WymiarKolumn)
+            return false;
+
+        for (int i = 0; i < WymiarWierszy; i++)
+        {
+            for (int j = 0; j < WymiarKolumn; j++)
+            {
+                if (!tablica[i, j].Equals(other[i, j]))
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static bool operator ==(Macierz<T> macierz1, Macierz<T> macierz2)
+    {
+        if (ReferenceEquals(macierz1, macierz2))
+            return true;
+
+        if (macierz1 is null || macierz2 is null)
+            return false;
+
+        return macierz1.Equals(macierz2);
+    }
+
+    public static bool operator !=(Macierz<T> macierz1, Macierz<T> macierz2)
+    {
+        return !(macierz1 == macierz2);
+    }
+
+    private bool CzyPrawidloweIndeksy(int wiersz, int kolumna)
+    {
+        return wiersz >= 0 && wiersz < WymiarWierszy && kolumna >= 0 && kolumna < WymiarKolumn;
+    }
+}

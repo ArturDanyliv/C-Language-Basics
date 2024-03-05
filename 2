@@ -1,0 +1,223 @@
+// Napisac program wczytujacy liczbe calkowita i wyisujacy na ekranie informacje czy jest to liczba parzysta , czy tez niepazrzysta 
+using System 
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a;
+            Console.Write("Podaj liczbe calowita: ");
+            a = Convert.ToInt32(Console.ReadLine());
+            if (a % 2 == 0)
+               Console.WriteLine("Liczba {0} jest parzysta.", a);
+            else 
+               Console.WriteLine("Liczba {0} jest nie parzysta." , a);
+            Console.ReadKey(true);  // pauza 
+        }
+    }
+}
+
+// 2 Napisac program wczytujacy liczbe calkowita i wypisujacy informacje , czy wczytana liczba jet dodatnia, ujemna , czy tez rowna zero 
+using System;
+namespace ConsoleApplication1 
+{
+    class Program
+    {
+        static void Main(string[] args);
+        {
+            int a;
+            Console.Write("Podaj liczne calkowita ");
+            a = Convert.ToInt(Console.ReadLine());
+            if (a > 0)
+               Console.WriteLine("Liczba {0} jest dodatnia." , a);
+            else if (a < 0)
+               Console.WriteLine("Liczba {0} jest ujemna.", a);
+            else 
+               Console.WriteLine("Liczba {0} jest rowna zero ", a);
+            Console.ReadKey(true); // pauza 
+        }
+    }
+}
+
+// 3 Napisac program wczytujacy trzy liczby i wypisujacy na ekranie wartosc najmniejszej i najwiekszej z tych liczb 
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double a, b, c;
+            Console.Write("Podaj liczbe nr 1: ");
+            a = Convert.ToDouble(Console.ReadLine());
+             Console.Write("Podaj liczbe nr 2: ");
+            b = Convert.ToDouble(Console.ReadLine());
+             Console.Write("Podaj liczbe nr 3: ");
+            c = Convert.ToDouble(Console.ReadLine());
+            if ((a <= b) && (a <= c))
+               Console.WriteLine("Liczba {0} jest najmniejsza", a);
+            else if ((b <= a) && (b <= c))
+               ConsoleWriteLine("Liczba {0} jest nieparzysta.", b);
+            else
+                ConsoleWriteLine("Liczba {0} jest nieparzysta.", c);
+            
+            // szukamy liczby najwiekszej 
+            if ((a >= b) && (a >= c))
+               ConsoleWriteLine("Liczba {0} jest najwieksza", a);
+            else if ((b>=a) && (b >= c))
+               ConsoleWriteLine("Liczba {0} jest najwieksza", b);
+            else 
+               ConsoleWriteLine("Liczba {0} jest najwieksza", c);
+            Console.ReadKey(true) // pauza 
+        }
+    }
+}
+
+// 4 Napisac program wczytujacy piec liczb i wpisujacy na ekranie wartosc najmniejszej i najwiekszej z tych liczb 
+using System 
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        double a, b, c, d, e, min, max;
+        Console.Write("Podaj liczbe nr 1: ");
+        a = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Podaj liczbe nr 2: ");
+        b = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Podaj liczbe nr 3: ");
+        c = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Podaj liczbe nr 4: ");
+        d = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Podaj liczbe nr 5: ");
+        e = Convert.ToDouble(Console.ReadLine());
+
+        // szukamy liczby najmniejszej 
+        min = a;
+        if (b < min) min = b;
+        if (c < min) min = c;
+        if (d < min) min = d;
+        if (e < min) min = e;
+        Console.Write;ine("Liczba {0} jest najmniejsza.", min);
+
+        // szukamy liczby najwiekszej 
+        max = a;
+        if (b > max) max = b;
+        if (c > max) max = c;
+        if (d > max) max = d;
+        if (e > max) max = e;
+        Console.WriteLine("Liczba {0} jest najwieksza.", max);
+        Console.ReadKey(true); //pauza 
+
+    }
+}
+
+// Napisac program wczytujacy rok i wypisujacy na ekranie informacje czy jest to rok przestepny czy tez nie 
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args);
+        {
+            int rok;
+            Console.Write("Podaj rok: ");
+            rok = Convert.ToInt32(Console.ReadLine());
+            if (((rok % 4 == 0) && (rok % 100 != 0)) || (rok % 400 == 0))
+               Console.WriteLine("Rok {0} jest przestepny.", rok);
+            else 
+               Console.WriteLine("Rok {0} nie jest przestepny. ", rok);
+            Console.ReadKey(true); //pauza 
+        }
+    }
+} 
+
+// Napisac program wczytujacy numer miesiaca (od 1 do 12) i wypisujacy na ekranie nazwe tego misiaca . Uzyj instrukcji wyboru switch 
+using System;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main (string[] args)
+        {
+            int miesiac;
+            Console.Write("Podaj numer misiaca: ");
+            miesiac = convert.ToInt32(Console.ReadLine());
+            switch(miesiac)
+            {
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                case 1: Console.WriteLine("Styczen");  break;
+                default:    Console.WriteLine("Nie ma takiego miesiaca! "); break;
+            }
+        }
+    }
+}
+
+// 7. Napisać program wczytujący liczbę arabską od 1 do 3999 i wypisujący na ekranie jej
+// odpowiednik rzymski.
+using System;
+namespace ConsoleApllication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a;
+            Console.Write("Podaj liczbe arabska od 1 do 3999: ");
+            a = Convert.ToInt32(Console.readLine());
+            // tysiace
+            if      ( a >= 3000 ) { a -= 3000; Console.Write("MMM"); }
+            else if (a >= 2000) { a -= 2000; Console.Write("MM"); } 
+            else if (a >= 1000) { a -= 1000; Console.Write("M"); } 
+
+            // setki 
+            if      ( a >= 900) { a -= 900; Console.Write("CM"); }
+            else if ( a >= 800) {a -= 800; ConsoleWrite("DCCC"); }
+            else if ( a >= 800) {a -= 800; ConsoleWrite("DCCC"); }
+            else if ( a >= 800) {a -= 800; ConsoleWrite("DCCC"); }
+            else if ( a >= 800) {a -= 800; ConsoleWrite("DCCC"); }
+            else if ( a >= 800) {a -= 800; ConsoleWrite("DCCC"); }
+            else if ( a >= 800) {a -= 800; ConsoleWrite("DCCC"); }
+            else if ( a >= 800) {a -= 800; ConsoleWrite("DCCC"); }
+            else if ( a >= 800) {a -= 800; ConsoleWrite("DCCC"); }
+            
+            // dziesiatki
+            if      ( a >= 90) { a -= 90; Console.Write("XC"); }
+            else if ( a >= 80) {a -= 80; ConsoleWrite("LXXX"); }
+            else if ( a >= 70) {a -= 70; ConsoleWrite("LXX"); }
+            else if ( a >= 60) {a -= 60; ConsoleWrite("LX"); }
+            else if ( a >= 50) {a -= 50; ConsoleWrite("L"); }
+            else if ( a >= 40) {a -= 40; ConsoleWrite("XL"); }
+            else if ( a >= 30) {a -= 30; ConsoleWrite("XXX"); }
+            else if ( a >= 20) {a -= 20; ConsoleWrite("XX"); }
+            else if ( a >= 10) {a -= 10; ConsoleWrite("X"); }
+            
+            // jednosci 
+            switch(a)
+            {
+                case 1: Console.wRITE("I"); break;
+                case 1: Console.wRITE("II"); break;
+                case 1: Console.wRITE("III"); break;
+                case 1: Console.wRITE("IV"); break;
+                case 1: Console.wRITE("V"); break;
+                case 1: Console.wRITE("VI"); break;
+                case 1: Console.wRITE("VII"); break;
+                case 1: Console.wRITE("VIII"); break;
+                case 1: Console.wRITE("IX"); break;
+                default: Console.Write("");  break;
+            }
+            Console.ReadKey(true); // pazuza
+        }
+    }
+}
+
